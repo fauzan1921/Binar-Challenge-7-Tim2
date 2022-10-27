@@ -31,10 +31,8 @@ const Login = () => {
                 Submit
               </Button>
 
-              <div className="login_register-right">
-                <a href="#" className="login_register-right">
-                  Register ?
-                </a>
+              <div className="register-right">
+                <a href="/Register">Register ?</a>
               </div>
             </Form>
           </div>

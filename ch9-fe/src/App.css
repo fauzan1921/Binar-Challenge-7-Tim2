@@ -8,8 +8,22 @@
   margin: 100px;
 }
 
-.login_register-right {
+.align-right {
   text-align: end;
 }
+
+.register-body {
+  background-color: #61dafb;
+}
+
+.register-login {
+  background-color:cornsilk;
+  padding: 150px;
+  margin: 100px;
+}
+
+
+
+
 
 
