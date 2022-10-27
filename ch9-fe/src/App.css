@@ -1,3 +1,4 @@
+
 .login_register-body {
   background-image: linear-gradient(to bottom right, #27c7f3, #8cd8ec, #21e8c7 );
 }
@@ -7,10 +8,6 @@
   padding: 150px;
   margin: 100px;
 }
-
-/* .login_register-btn {
-  padding: 100%;
-} */
 
 .align-right {
   text-align: end;
