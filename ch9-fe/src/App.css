@@ -48,6 +48,8 @@
   background-image: linear-gradient(to bottom right, cornsilk, aliceblue, azure);
   padding: 150px;
   margin: 100px;
+  border: 1px cornsilk solid;
+  border-radius: 15px;
 }
 
 .align-right {
@@ -63,7 +65,10 @@
   padding: 150px;
   padding: 150px;
   margin: 100px;
+  border: 1px cornsilk solid;
+  border-radius: 15px;
 }
+
 
 
 
