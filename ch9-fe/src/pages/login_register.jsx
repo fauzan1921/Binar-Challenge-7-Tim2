@@ -10,8 +10,8 @@ const Login = () => {
     <Container fluid className="login_register-body">
       <Row className="justify-content-md-center">
         <Col md="auto" className="login_register-login">
-          <div className="mb-4">
-            <h2>ACCOUNT LOGIN</h2>
+          <div className="mb-4 text-center">
+            <h3>ACCOUNT LOGIN</h3>
           </div>
           <div>
             <Form>
@@ -27,14 +27,15 @@ const Login = () => {
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" placeholder="Password" />
               </Form.Group>
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
-
-              <div className="register-right">
-                <a href="/Register">Register ?</a>
+              <div className="d-grid gap-2 mt-4">
+                <Button variant="primary" type="submit">
+                  Submit
+                </Button>
               </div>
             </Form>
+            <div className="mt-5 align-right">
+              <a href="/Register">Register ?</a>
+            </div>
           </div>
         </Col>
       </Row>
