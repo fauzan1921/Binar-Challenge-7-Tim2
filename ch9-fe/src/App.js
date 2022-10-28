@@ -1,4 +1,5 @@
 import "./App.css";
+import "./assets/stylesheets/profilePage.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing from "./pages/landing";
 import Login from "./pages/login_register";
