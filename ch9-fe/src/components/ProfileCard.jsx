@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-function ProfileCard() {
+function ProfileCard(props) {
     return (
         <Card>
             <Card.Body className="text-center">
@@ -23,7 +23,9 @@ function ProfileCard() {
                     {"   "}
                     <h6 className="my-inline-display">username@email.com</h6>
                 </Card.Subtitle>
-                <Button variant="primary">Edit Profile</Button>
+                <Button variant="primary" onClick={props.showModal}>
+                    Edit Profile
+                </Button>
             </Card.Body>
         </Card>
     );
