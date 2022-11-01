@@ -36,3 +36,42 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+
+.login_register-body {
+  background-image: linear-gradient(to bottom right, #27c7f3, #8cd8ec, #21e8c7 );
+}
+
+.login_register-login {
+  background-image: linear-gradient(to bottom right, cornsilk, aliceblue, azure);
+  padding: 150px;
+  margin: 100px;
+  border: 1px cornsilk solid;
+  border-radius: 15px;
+}
+
+.align-right {
+  text-align: end;
+}
+
+.register-body {
+  background-image: linear-gradient(to bottom right, #27c7f3, #8cd8ec, #21e8c7 );
+}
+
+.register-login {
+  background-image: linear-gradient(to bottom right, azure, aliceblue, cornsilk);
+  padding: 150px;
+  padding: 150px;
+  margin: 100px;
+  border: 1px cornsilk solid;
+  border-radius: 15px;
+}
+
+
+
+
+
+
+
