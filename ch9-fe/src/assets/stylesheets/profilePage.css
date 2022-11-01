@@ -1,0 +1,11 @@
+body {
+    background-color: #81c6e8;
+}
+
+.my-mt {
+    margin-top: 1rem;
+}
+
+.my-inline-display {
+    display: inline;
+}
