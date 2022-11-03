@@ -17,7 +17,7 @@ const Layout = () => {
               <Nav.Link href="/game">Game</Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link href="/login_register">Login</Nav.Link>
+              <Nav.Link href="/login">Login</Nav.Link>
               <Nav.Link href="/register">Register</Nav.Link>
             </Nav>
           </Navbar.Collapse>
