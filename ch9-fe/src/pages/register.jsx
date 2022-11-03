@@ -28,12 +28,14 @@ class Register extends Component {
         // Signed in
         const user = userCredential.user;
         console.log("SUCCCES", user);
+        alert("SUCCESS REGISTER");
         window.location.href = "/";
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log("ERROR", errorMessage);
+        alert(errorMessage);
       });
   };
 
@@ -53,20 +55,18 @@ class Register extends Component {
             </div>
             <div>
               <div>
-                <input
-                  type="email"
-                  placeholder="Enter email"
+                <Form.Control
+                  placeholder="Email"
                   id="email"
                   onChange={this.handleOnChange}
-                ></input>
-              </div>
-              <div className="mt-4">
-                <input
-                  type="password"
-                  placeholder="Enter password"
+                />
+                <Form.Control
+                  className="mt-3"
+                  placeholder="Password"
                   id="password"
+                  type="password"
                   onChange={this.handleOnChange}
-                ></input>
+                />
               </div>
               <div className="d-grid gap-2 mt-4">
                 <Button
