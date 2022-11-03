@@ -26,7 +26,7 @@ class Login extends Component {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-
+        localStorage.setItem("jwt-token", user.accessToken);
         alert("SUCCES LOGIN");
         window.location.href = "/game";
       })
