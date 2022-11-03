@@ -1,0 +1,10 @@
+contoh isi dalam firebase :
+sesuaikan dengan firebase masing2
+    
+    apiKey: "Base on your apiKey",
+    authDomain: "base on your  authDomain",
+    projectId: "base on your projectId",
+    storageBucket: "base on your storageBucket",
+    messagingSenderId: "base on your messagingSenderId",
+    appId: "base on your appId",
+    measurementId: "base on your measurementId"
