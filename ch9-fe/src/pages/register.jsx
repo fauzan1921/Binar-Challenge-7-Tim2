@@ -28,8 +28,9 @@ class Register extends Component {
         // Signed in
         const user = userCredential.user;
         console.log("SUCCCES", user);
+
         alert("SUCCESS REGISTER");
-        window.location.href = "/";
+        window.location.href = "/game";
       })
       .catch((error) => {
         const errorCode = error.code;

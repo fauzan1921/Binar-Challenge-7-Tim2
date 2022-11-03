@@ -26,8 +26,9 @@ class Login extends Component {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+
         alert("SUCCES LOGIN");
-        window.location.href = "/";
+        window.location.href = "/game";
       })
       .catch((error) => {
         const errorCode = error.code;
