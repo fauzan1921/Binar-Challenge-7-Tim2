@@ -8,26 +8,106 @@ import '../css/game_detail.css';
 class Game extends Component {
 
     state = {
-        backgroundColor : {
-            kertasPlayer : '',
-            batuPlayer : '',
-            guntingPlayer : ''
-        }
+        playerBackgroundColor : {
+            kertas : false,
+            batu : false,
+            gunting : false
+        },
+        comBackgroundColor : {
+            kertas : false,
+            batu : false,
+            gunting : false
+        },
+        isCLick : false,
+        playerChoice : '',
+        comChoice : '',
+        result : 'VS'
 
     }
 
 
     handlingMouseEnter = (event) => {
         this.setState({
-            backgroundColor : { [event.target.id] : '#C4C4C4' }
+            playerBackgroundColor : { [event.target.id] : true }
         })
     }
 
     handlingMouseLeave = (event) => {
         this.setState({
-            backgroundColor : { [event.target.id] : '#9C835F' }
+            playerBackgroundColor : { [event.target.id] : false }
         })
     }
+
+    handlingOnClick = (event) => {
+        this.setState({
+            isCLick : true,
+            playerChoice : event.target.id,
+        })
+        this.generateRandom()
+    }
+
+    generateRandom = () => {
+        const randomNumber = Math.floor(Math.random()*3) 
+
+        if(randomNumber === 0) {
+            this.setState({
+                comBackgroundColor : {gunting : true},
+                comChoice : 'gunting'
+            })
+        } else if (randomNumber === 1) {
+            this.setState({
+                comBackgroundColor : {kertas : true},
+                comChoice : 'kertas'
+            })
+        } else {
+            this.setState({
+                comBackgroundColor : {batu : true},
+                comChoice : 'batu'
+            })
+        }
+    }
+
+    compareChoice = () => {
+        console.log(this.state.playerChoice)
+        console.log(this.state.comChoice)
+
+        if (this.state.comChoice === this.state.playerChoice){
+            this.setState({
+                result : 'DRAW'
+            })
+        } else if (this.state.comChoice === 'gunting' && this.state.playerChoice === 'batu'){
+            this.setState({
+                result : 'PLAYER WIN'
+            })
+        } else if (this.state.comChoice === 'gunting' && this.state.playerChoice === 'kertas'){
+            this.setState({
+                result : 'COM WIN'
+            })
+        } else if (this.state.comChoice === 'batu' && this.state.playerChoice === 'kertas'){
+            this.setState({
+                result : 'PLAYER WIN'
+            })
+        } else if (this.state.comChoice === 'batu' && this.state.playerChoice === 'gunting'){
+            this.setState({
+                result : 'COM WIN'
+            })
+        } else if (this.state.comChoice === 'kertas' && this.state.playerChoice === 'gunting'){
+            this.setState({
+                result : 'PLAYER WIN'
+            })
+        } else if(this.state.comChoice === 'kertas' && this.state.playerChoice === 'batu'){
+            this.setState({
+                result : 'COM WIN'
+            })
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if(prevState.comChoice != this.state.comChoice){
+            this.compareChoice()
+        }
+    }
+
 
     render(){
         return(
@@ -36,7 +116,11 @@ class Game extends Component {
                     <ScissorGame 
                     handlingMouseEnter={this.handlingMouseEnter} 
                     handlingMouseLeave={this.handlingMouseLeave}
-                    backgroundColor={this.state.backgroundColor}
+                    playerBackgroundColor={this.state.playerBackgroundColor}
+                    comBackgroundColor={this.state.comBackgroundColor}
+                    handlingOnClick={this.handlingOnClick}
+                    isCLick={this.state.isCLick}
+                    result={this.state.result}
                     />
                     <GameLeaderboard />
                 </Row>
