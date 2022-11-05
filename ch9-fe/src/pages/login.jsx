@@ -28,12 +28,14 @@ class Login extends Component {
         const user = userCredential.user;
         localStorage.setItem("jwt-token", user.accessToken);
         alert("SUCCES LOGIN");
-        window.location.href = "/game";
+        console.log(alert);
+        // window.location.href = "/game";
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         alert(errorMessage);
+        console.log(alert);
       });
   };
 
