@@ -56,6 +56,7 @@ class Register extends Component {
             <div>
               <div>
                 <Form.Control
+                  className="mt-3"
                   placeholder="Email"
                   id="email"
                   onChange={this.handleOnChange}
@@ -65,6 +66,20 @@ class Register extends Component {
                   placeholder="Password"
                   id="password"
                   type="password"
+                  onChange={this.handleOnChange}
+                />
+                <Form.Control
+                  className="mt-3"
+                  placeholder="User Name"
+                  id="name"
+                  type="text"
+                  onChange={this.handleOnChange}
+                />
+                <Form.Control
+                  className="mt-3"
+                  placeholder="Full Name"
+                  id="user"
+                  type="text"
                   onChange={this.handleOnChange}
                 />
               </div>
