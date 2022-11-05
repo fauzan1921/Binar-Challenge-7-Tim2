@@ -27,9 +27,9 @@ class Login extends Component {
         // Signed in
         const user = userCredential.user;
         localStorage.setItem("jwt-token", user.accessToken);
-        alert("SUCCES LOGIN");
+        alert("SUCCES LOGIN, NOW YOU CAN CLICK GAME ICON ON HOME PAGE");
         console.log(alert);
-        // window.location.href = "/game";
+        window.location.href = "/";
       })
       .catch((error) => {
         const errorCode = error.code;
