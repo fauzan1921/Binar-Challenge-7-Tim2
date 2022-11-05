@@ -76,6 +76,9 @@ class Login extends Component {
                   Submit
                 </Button>
               </div>
+              <div className="mt-5 align-right">
+                <a href="/Register">Register ?</a>
+              </div>
             </div>
           </Col>
         </Row>
