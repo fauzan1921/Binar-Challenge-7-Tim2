@@ -28,7 +28,7 @@ class Register extends Component {
         // Signed in
         const user = userCredential.user;
         console.log("SUCCCES", user);
-
+        localStorage.setItem("jwt-token", user.accessToken);
         alert("SUCCESS REGISTER");
         window.location.href = "/game";
       })

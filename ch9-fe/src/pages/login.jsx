@@ -26,7 +26,7 @@ class Login extends Component {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-
+        localStorage.setItem("jwt-token", user.accessToken);
         alert("SUCCES LOGIN");
         window.location.href = "/game";
       })
@@ -75,6 +75,9 @@ class Login extends Component {
                 >
                   Submit
                 </Button>
+              </div>
+              <div className="mt-5 align-right">
+                <a href="/Register">Register ?</a>
               </div>
             </div>
           </Col>
