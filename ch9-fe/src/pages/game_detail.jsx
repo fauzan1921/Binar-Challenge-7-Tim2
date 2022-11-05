@@ -28,12 +28,6 @@ class Game extends Component {
     window.location.href = "/";
   };
 
-  logout = () => {
-    <Button variant="danger" type="submit" onClick={this.handleLogout}>
-      LOGOUT
-    </Button>;
-  };
-
   handlingMouseEnter = (event) => {
     this.setState({
       playerBackgroundColor: { [event.target.id]: true },
@@ -154,7 +148,12 @@ class Game extends Component {
             result={this.state.result}
           />
           <GameLeaderboard />
-          <div className=" text-center gap-2 mt-4">logout={this.logout}</div>
+          <div className=" text-center gap-2 mt-4">
+            <Button variant="danger" type="submit" onClick={this.handleLogout}>
+              LOGOUT
+            </Button>
+            ;
+          </div>
         </Row>
       </div>
     );

@@ -6,9 +6,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import { Component } from "react";
-import authFirebase from "../config/firebase";
+import { authFirebase } from "../config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import AlertDismissible from "../function/function";
 
 class Register extends Component {
   state = {

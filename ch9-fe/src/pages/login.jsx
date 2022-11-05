@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Component } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import authFirebase from "../config/firebase";
+import { authFirebase } from "../config/firebase";
 
 class Login extends Component {
   state = {
