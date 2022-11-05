@@ -4,22 +4,21 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Alert from "react-bootstrap/Alert";
 import { Component } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import authFirebase from "../config/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import AlertDismissible from "../function/function";
 
-class Register extends Component {
+class Login extends Component {
   state = {
     email: "",
     password: "",
   };
 
-  handleRegister = () => {
+  handleLogin = () => {
+    // TODO
     console.log(this.state);
 
-    createUserWithEmailAndPassword(
+    signInWithEmailAndPassword(
       authFirebase,
       this.state.email,
       this.state.password
@@ -27,15 +26,13 @@ class Register extends Component {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log("SUCCCES", user);
 
-        alert("SUCCESS REGISTER");
+        alert("SUCCES LOGIN");
         window.location.href = "/game";
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log("ERROR", errorMessage);
         alert(errorMessage);
       });
   };
@@ -48,11 +45,11 @@ class Register extends Component {
 
   render() {
     return (
-      <Container fluid className="register-body">
+      <Container fluid className="login_register-body">
         <Row className="justify-content-md-center">
-          <Col md="auto" className="register-login">
+          <Col md="auto" className="login_register-login">
             <div className="mb-4 text-center">
-              <h3>ACCOUNT REGISTER</h3>
+              <h3>ACCOUNT LOGIN</h3>
             </div>
             <div>
               <div>
@@ -69,11 +66,12 @@ class Register extends Component {
                   onChange={this.handleOnChange}
                 />
               </div>
+
               <div className="d-grid gap-2 mt-4">
                 <Button
                   variant="primary"
                   type="submit"
-                  onClick={this.handleRegister}
+                  onClick={this.handleLogin}
                 >
                   Submit
                 </Button>
@@ -86,4 +84,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default Login;

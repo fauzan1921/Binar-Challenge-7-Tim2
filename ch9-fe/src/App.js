@@ -2,7 +2,7 @@ import "./App.css";
 import "./assets/stylesheets/profilePage.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing from "./pages/landing";
-import Login from "./pages/login_register";
+import Login from "./pages/login";
 import Game from "./pages/game_detail";
 import Profile from "./pages/profile";
 import Layout from "./components/Layout";
@@ -16,7 +16,7 @@ function App() {
                     <Route index element={<Landing />} />
                     <Route path="profile" element={<Profile />} />
                     <Route path="game" element={<Game />} />
-                    <Route path="login_register" element={<Login />} />
+                    <Route path="login" element={<Login />} />
                     <Route path="register" element={<Register/>} />
                 </Route>
             </Routes>
