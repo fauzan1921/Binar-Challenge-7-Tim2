@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Col, Row, Table } from "react-bootstrap";
+import { Col, Row, Table, Button } from "react-bootstrap";
 import GameLeaderboard from "../components/GameLeaderboard";
 import ScissorGame from "../components/ScissorGame";
 import "../css/game_detail.css";
@@ -20,6 +20,18 @@ class Game extends Component {
     playerChoice: "",
     comChoice: "",
     result: "VS",
+  };
+
+  handleLogout = () => {
+    localStorage.removeItem("jwt-token");
+    alert("YOU ARE LOGOUT");
+    window.location.href = "/";
+  };
+
+  logout = () => {
+    <Button variant="danger" type="submit" onClick={this.handleLogout}>
+      LOGOUT
+    </Button>;
   };
 
   handlingMouseEnter = (event) => {
@@ -142,6 +154,7 @@ class Game extends Component {
             result={this.state.result}
           />
           <GameLeaderboard />
+          <div className=" text-center gap-2 mt-4">logout={this.logout}</div>
         </Row>
       </div>
     );
