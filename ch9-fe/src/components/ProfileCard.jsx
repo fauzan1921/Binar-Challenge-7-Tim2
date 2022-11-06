@@ -24,7 +24,7 @@ class ProfileCard extends Component {
                         <i class="fa-solid fa-envelope"></i>
                         {"   "}
                         <h6 className="my-inline-display">
-                            {this.props.user.email}
+                            useremail@gmail.com
                         </h6>
                     </Card.Subtitle>
                     <Button variant="primary" onClick={this.props.showModal}>

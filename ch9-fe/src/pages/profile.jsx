@@ -1,3 +1,7 @@
+import { useState } from "react";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -6,9 +10,14 @@ import GameHistory from "../components/GameHistory";
 import GamePoint from "../components/GamePoint";
 import { Component } from "react";
 import EditProfileModal from "../components/EditProfileModal";
+import { getBiodataById } from "../action/biodata";
+
 class Profile extends Component {
     state = {
         show: false,
+        username: "",
+        fullname: "",
+        email: "",
     };
 
     handleShow = () => {
@@ -17,13 +26,23 @@ class Profile extends Component {
         });
     };
 
+    getUserData = async () => {
+        const id = this.props.user.user_id;
+        const resp = await getBiodataById(id);
+
+        this.setState({
+            username: "username",
+            fullname: resp.fullname,
+            email: resp.email,
+        });
+    };
+
     check = () => {
         alert(`click`);
-        console.log(this.props.user);
     };
 
     componentDidMount() {
-        this.check();
+        this.getUserData();
     }
 
     render() {
