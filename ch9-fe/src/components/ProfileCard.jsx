@@ -13,14 +13,14 @@ class ProfileCard extends Component {
                         style={{ borderRadius: "50%" }}
                     />
                     <Card.Title>
-                        <h4>{this.props.user.fullname}</h4>
-                    </Card.Title>
-                    <Card.Subtitle className="mb-2 text-secondary ">
                         <i class="fa-solid fa-user "></i>
                         {"   "}
-                        <h5 className="my-inline-display">
-                            {this.props.user.username}
-                        </h5>
+                        <h4 className="my-inline-display">
+                            {this.props.user.fullname}
+                        </h4>
+                    </Card.Title>
+                    <Card.Subtitle className="mb-2 text-secondary ">
+                        <h5>@{this.props.user.username}</h5>
                     </Card.Subtitle>
                     <Card.Subtitle className="mb-2 text-muted">
                         <i class="fa-solid fa-envelope"></i>

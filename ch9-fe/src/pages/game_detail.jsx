@@ -7,6 +7,7 @@ import { getBiodataById } from "../action/biodata";
 import { getLeaderboardById, insertLeaderboard, updateLeaderboard, getAllLeaderboard} from "../action/game"
 
 class Game extends Component {
+
   state = {
     playerBackgroundColor: {
       kertas: false,
@@ -27,105 +28,107 @@ class Game extends Component {
     leaderboard : []
   };
 
-  handleLogout = () => {
-    localStorage.removeItem("jwt-token");
-    alert("YOU ARE LOGOUT");
-    window.location.href = "/";
-  };
 
-  handlingMouseEnter = (event) => {
-    this.setState({
-      playerBackgroundColor: { [event.target.id]: true },
-    });
-  };
+    handleLogout = () => {
+        localStorage.removeItem("jwt-token");
+        alert("YOU ARE LOGOUT");
+        window.location.href = "/";
+    };
 
-  handlingMouseLeave = (event) => {
-    this.setState({
-      playerBackgroundColor: { [event.target.id]: false },
-    });
-  };
+    handlingMouseEnter = (event) => {
+        this.setState({
+            playerBackgroundColor: { [event.target.id]: true },
+        });
+    };
 
-  handlingOnClick = (event) => {
-    this.setState({
-      isCLick: true,
-      playerChoice: event.target.id,
-    });
-    this.generateRandom();
-  };
+    handlingMouseLeave = (event) => {
+        this.setState({
+            playerBackgroundColor: { [event.target.id]: false },
+        });
+    };
 
-  generateRandom = () => {
-    const randomNumber = Math.floor(Math.random() * 3);
+    handlingOnClick = (event) => {
+        this.setState({
+            isCLick: true,
+            playerChoice: event.target.id,
+        });
+        this.generateRandom();
+    };
 
-    if (randomNumber === 0) {
-      this.setState({
-        comBackgroundColor: { gunting: true },
-        comChoice: "gunting",
-      });
-    } else if (randomNumber === 1) {
-      this.setState({
-        comBackgroundColor: { kertas: true },
-        comChoice: "kertas",
-      });
-    } else {
-      this.setState({
-        comBackgroundColor: { batu: true },
-        comChoice: "batu",
-      });
-    }
-  };
+    generateRandom = () => {
+        const randomNumber = Math.floor(Math.random() * 3);
 
-  compareChoice = () => {
-    console.log(this.state.playerChoice);
-    console.log(this.state.comChoice);
+        if (randomNumber === 0) {
+            this.setState({
+                comBackgroundColor: { gunting: true },
+                comChoice: "gunting",
+            });
+        } else if (randomNumber === 1) {
+            this.setState({
+                comBackgroundColor: { kertas: true },
+                comChoice: "kertas",
+            });
+        } else {
+            this.setState({
+                comBackgroundColor: { batu: true },
+                comChoice: "batu",
+            });
+        }
+    };
 
-    if (this.state.comChoice === this.state.playerChoice) {
-      this.setState({
-        result: "DRAW",
-      });
-    } else if (
-      this.state.comChoice === "gunting" &&
-      this.state.playerChoice === "batu"
-    ) {
-      this.setState({
-        result: "PLAYER WIN",
-      });
-    } else if (
-      this.state.comChoice === "gunting" &&
-      this.state.playerChoice === "kertas"
-    ) {
-      this.setState({
-        result: "COM WIN",
-      });
-    } else if (
-      this.state.comChoice === "batu" &&
-      this.state.playerChoice === "kertas"
-    ) {
-      this.setState({
-        result: "PLAYER WIN",
-      });
-    } else if (
-      this.state.comChoice === "batu" &&
-      this.state.playerChoice === "gunting"
-    ) {
-      this.setState({
-        result: "COM WIN",
-      });
-    } else if (
-      this.state.comChoice === "kertas" &&
-      this.state.playerChoice === "gunting"
-    ) {
-      this.setState({
-        result: "PLAYER WIN",
-      });
-    } else if (
-      this.state.comChoice === "kertas" &&
-      this.state.playerChoice === "batu"
-    ) {
-      this.setState({
-        result: "COM WIN",
-      });
-    }
-  };
+    compareChoice = () => {
+        console.log(this.state.playerChoice);
+        console.log(this.state.comChoice);
+
+        if (this.state.comChoice === this.state.playerChoice) {
+            this.setState({
+                result: "DRAW",
+            });
+        } else if (
+            this.state.comChoice === "gunting" &&
+            this.state.playerChoice === "batu"
+        ) {
+            this.setState({
+                result: "PLAYER WIN",
+            });
+        } else if (
+            this.state.comChoice === "gunting" &&
+            this.state.playerChoice === "kertas"
+        ) {
+            this.setState({
+                result: "COM WIN",
+            });
+        } else if (
+            this.state.comChoice === "batu" &&
+            this.state.playerChoice === "kertas"
+        ) {
+            this.setState({
+                result: "PLAYER WIN",
+            });
+        } else if (
+            this.state.comChoice === "batu" &&
+            this.state.playerChoice === "gunting"
+        ) {
+            this.setState({
+                result: "COM WIN",
+            });
+        } else if (
+            this.state.comChoice === "kertas" &&
+            this.state.playerChoice === "gunting"
+        ) {
+            this.setState({
+                result: "PLAYER WIN",
+            });
+        } else if (
+            this.state.comChoice === "kertas" &&
+            this.state.playerChoice === "batu"
+        ) {
+            this.setState({
+                result: "COM WIN",
+            });
+        }
+    };
+
 
   getUserData = async () => {
     const id = this.props.user.user_id;
@@ -182,12 +185,13 @@ class Game extends Component {
     }
   }
 
-  render() {
-    console.log(localStorage.getItem("jwt-token"));
 
-    if (localStorage.getItem("jwt-token") === null) {
-      window.location.href = "/login";
-    }
+    render() {
+        console.log(localStorage.getItem("jwt-token"));
+
+        if (localStorage.getItem("jwt-token") === null) {
+            window.location.href = "/login";
+        }
 
     console.log(this.state.user)
 
@@ -216,6 +220,7 @@ class Game extends Component {
       </div>
     );
   }
+
 }
 
 export default Game;

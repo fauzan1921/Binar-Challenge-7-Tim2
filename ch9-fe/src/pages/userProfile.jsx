@@ -8,7 +8,7 @@ import GameHistory from "../components/GameHistory";
 import GamePoint from "../components/GamePoint";
 
 import EditProfileModal from "../components/EditProfileModal";
-import { getBiodataById } from "../action/biodata";
+import { getBiodataById, updateBiodataById } from "../action/biodata";
 
 const UserProfile = (props) => {
     const { user } = props;
@@ -22,6 +22,7 @@ const UserProfile = (props) => {
     const [inputs, setInputs] = useState({
         username: "",
         fullname: "",
+        email: "",
     });
 
     const [show, setShow] = useState(false);
@@ -44,11 +45,11 @@ const UserProfile = (props) => {
         const id = user.user_id;
         const resp = await getBiodataById(id);
         setBiodata(resp);
+        setInputs(resp);
     };
 
-    const check = () => {
-        alert(`click`);
-        console.log(inputs);
+    const updateUserData = () => {
+        updateBiodataById(user.user_id, inputs.username, inputs.fullname);
     };
 
     useEffect(() => {
@@ -70,7 +71,7 @@ const UserProfile = (props) => {
                             show={show}
                             handleClose={handleClose}
                             handleOnChange={handleOnChange}
-                            check={check}
+                            handleUpdate={updateUserData}
                         />
                     </Container>
                     <Container className="my-mt">
