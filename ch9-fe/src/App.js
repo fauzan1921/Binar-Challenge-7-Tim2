@@ -8,6 +8,7 @@ import Profile from "./pages/profile";
 import Layout from "./components/Layout";
 import Register from "./pages/register";
 import { decodedToken } from "./action/authentication";
+import UserProfile from "./pages/userProfile";
 
 function App() {
     let user;
@@ -19,7 +20,10 @@ function App() {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Landing />} />
-                    <Route path="profile" element={<Profile user={user} />} />
+                    <Route
+                        path="profile"
+                        element={<UserProfile user={user} />}
+                    />
                     <Route path="game" element={<Game />} />
                     <Route path="login" element={<Login />} />
                     <Route path="register" element={<Register />} />

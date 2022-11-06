@@ -45,6 +45,7 @@ function EditProfileModal(props) {
                         </Form.Label>
                         <Col sm="9">
                             <Form.Control
+                                disabled
                                 type="email"
                                 placeholder="email@example.com"
                                 id="email"
@@ -59,8 +60,9 @@ function EditProfileModal(props) {
                         </Form.Label>
                         <Col sm="9">
                             <Form.Control
+                                disabled
                                 type="password"
-                                placeholder="Password"
+                                placeholder="******"
                                 id="password"
                                 onChange={handleOnChange}
                             />
