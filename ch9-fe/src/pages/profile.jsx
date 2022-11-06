@@ -1,7 +1,3 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
-
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -31,14 +27,21 @@ class Profile extends Component {
         const resp = await getBiodataById(id);
 
         this.setState({
-            username: "username",
+            username: resp.username,
             fullname: resp.fullname,
             email: resp.email,
         });
     };
 
+    handleOnChange = (event) => {
+        this.setState({
+            [event.target.id]: event.target.value,
+        });
+    };
+
     check = () => {
         alert(`click`);
+        console.log(this.state);
     };
 
     componentDidMount() {
@@ -62,6 +65,8 @@ class Profile extends Component {
                             <EditProfileModal
                                 show={this.state.show}
                                 handleClose={this.handleShow}
+                                handleOnChange={this.handleOnChange}
+                                check={this.check}
                             />
                         </Container>
                         <Container className="my-mt">

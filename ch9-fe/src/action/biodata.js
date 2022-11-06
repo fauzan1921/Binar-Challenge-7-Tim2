@@ -16,15 +16,6 @@ export const insertBiodata = (email, password, name, user) => {
 };
 // export default insertBiodata;
 
-// import { getDatabase, ref, onValue} from "firebase/database";
-
-// const db = getDatabase();
-// const starCountRef = ref(db, 'posts/' + postId + '/starCount');
-// onValue(starCountRef, (snapshot) => {
-//   const data = snapshot.val();
-//   updateStarCount(postElement, data);
-// });
-
 //READ BIODATA BY ID
 export const getBiodataById = (id) => {
     return new Promise((resolve, reject) => {
