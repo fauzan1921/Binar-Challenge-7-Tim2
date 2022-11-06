@@ -76,7 +76,7 @@ class ScissorGame extends Component {
                     </div>
                 </div>
                 <div class="refresh">
-                    <a href="#"><img src={require("../assets/refresh.png")} alt="" class="refresh-bt"/></a>
+                    <a href="/game"><img src={require("../assets/refresh.png")} alt="" class="refresh-bt"/></a>
                 </div>
             </Col>
         )
