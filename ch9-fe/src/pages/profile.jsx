@@ -19,17 +19,26 @@ class Profile extends Component {
 
     check = () => {
         alert(`click`);
+        console.log(this.props.user);
     };
 
-    componentDidMount() {}
+    componentDidMount() {
+        this.check();
+    }
 
     render() {
+        if (localStorage.getItem("jwt-token") === null) {
+            window.location.href = "/login";
+        }
         return (
             <Container fluid="md" bg="dark" className="my-mt">
                 <Row>
                     <Col sm={4}>
                         <Container>
-                            <ProfileCard showModal={this.handleShow} />
+                            <ProfileCard
+                                showModal={this.handleShow}
+                                user={this.props.user}
+                            />
 
                             <EditProfileModal
                                 show={this.state.show}
