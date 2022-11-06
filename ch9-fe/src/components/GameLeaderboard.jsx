@@ -10,22 +10,19 @@ class GameLeaderboard extends Component {
                 <Table striped bordered hover>
                     <thead>
                         <tr>
-                        <th>Rank</th>
                         <th>Username</th>
                         <th>Win</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>5</td>
-                        </tr>
-                        <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>3</td>
-                        </tr>
+                        {
+                        this.props.leaderboard.map(e => (
+                            <tr>
+                            <td>{e.data.username}</td>
+                            <td>{e.data.win}</td>
+                            </tr>
+                        ))
+                        }
                     </tbody>
                 </Table>
             </Col>
