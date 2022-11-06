@@ -26,6 +26,7 @@ const Layout = (props) => {
         if (ans) {
             localStorage.removeItem("jwt-token");
             alert(`Thanks for coming`);
+            window.location.href = "/login";
         }
     };
 
@@ -60,7 +61,6 @@ const Layout = (props) => {
                                         Hello, {biodata.username}
                                     </Nav.Link>
                                     <Nav.Link
-                                        href="/login"
                                         onClick={handleLogout}
                                     >
                                         Logout
