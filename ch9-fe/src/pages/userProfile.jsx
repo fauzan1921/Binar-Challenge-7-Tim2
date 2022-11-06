@@ -19,14 +19,24 @@ const UserProfile = (props) => {
         username: "Loading...",
     });
 
+    const [inputs, setInputs] = useState({
+        username: "",
+        fullname: "",
+    });
+
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const handleOnChange = (event) => {
-        this.setState({
-            [event.target.id]: event.target.value,
+    const handleOnChange = (e) => {
+        const name = e.target.id;
+        const value = e.target.value;
+
+        setInputs((prev) => {
+            prev[name] = value;
+
+            return prev;
         });
     };
 
@@ -34,11 +44,11 @@ const UserProfile = (props) => {
         const id = user.user_id;
         const resp = await getBiodataById(id);
         setBiodata(resp);
-        // console.log(resp);
     };
 
     const check = () => {
         alert(`click`);
+        console.log(inputs);
     };
 
     useEffect(() => {
@@ -56,6 +66,7 @@ const UserProfile = (props) => {
                         <ProfileCard showModal={handleShow} user={biodata} />
 
                         <EditProfileModal
+                            user={biodata}
                             show={show}
                             handleClose={handleClose}
                             handleOnChange={handleOnChange}

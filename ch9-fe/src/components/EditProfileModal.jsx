@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 
 function EditProfileModal(props) {
-    const { show, handleClose, handleOnChange, check } = props;
+    const { user, show, handleClose, handleOnChange, check } = props;
     return (
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
@@ -20,7 +20,7 @@ function EditProfileModal(props) {
                         <Col sm="9">
                             <Form.Control
                                 type="string"
-                                placeholder="fullname"
+                                defaultValue={user.fullname}
                                 id="fullname"
                                 onChange={handleOnChange}
                             />
@@ -33,7 +33,7 @@ function EditProfileModal(props) {
                         <Col sm="9">
                             <Form.Control
                                 type="string"
-                                placeholder="username"
+                                defaultValue={user.username}
                                 id="username"
                                 onChange={handleOnChange}
                             />
@@ -47,7 +47,7 @@ function EditProfileModal(props) {
                             <Form.Control
                                 disabled
                                 type="email"
-                                placeholder="email@example.com"
+                                placeholder={user.email}
                                 id="email"
                                 onChange={handleOnChange}
                             />
@@ -77,7 +77,7 @@ function EditProfileModal(props) {
                 <Button
                     variant="primary"
                     onClick={() => {
-                        handleClose();
+                        // handleClose();
                         check();
                     }}
                 >
