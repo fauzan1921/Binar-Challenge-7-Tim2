@@ -1,4 +1,4 @@
-import { set, ref, push, onValue } from "firebase/database";
+import { set, ref, onValue, update } from "firebase/database";
 import { database } from "../config/firebase";
 
 const db = database;
@@ -25,4 +25,20 @@ export const getBiodataById = (id) => {
             resolve(value);
         });
     });
+};
+
+// UPDATE USER DATA BY ID
+export const updateBiodataById = (id, username, fullname) => {
+    const dbRef = ref(db, `biodata/${id}`);
+    const updateData = {
+        fullname,
+        username,
+    };
+    update(dbRef, updateData)
+        .then(() => {
+            return alert(`Data updated`);
+        })
+        .catch((error) => {
+            return alert(`Data update failed`);
+        });
 };

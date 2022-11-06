@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 
 function EditProfileModal(props) {
-    const { user, show, handleClose, handleOnChange, check } = props;
+    const { user, show, handleClose, handleOnChange, handleUpdate } = props;
     return (
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
@@ -77,8 +77,8 @@ function EditProfileModal(props) {
                 <Button
                     variant="primary"
                     onClick={() => {
-                        // handleClose();
-                        check();
+                        handleUpdate();
+                        handleClose();
                     }}
                 >
                     Save Changes
