@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Component } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import authFirebase from "../config/firebase";
+import { authFirebase } from "../config/firebase";
 
 class Login extends Component {
   state = {
@@ -27,13 +27,15 @@ class Login extends Component {
         // Signed in
         const user = userCredential.user;
         localStorage.setItem("jwt-token", user.accessToken);
-        alert("SUCCES LOGIN");
-        window.location.href = "/game";
+        alert("SUCCES LOGIN, NOW YOU CAN CLICK GAME ICON ON HOME PAGE");
+        console.log(alert);
+        window.location.href = "/";
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         alert(errorMessage);
+        console.log(alert);
       });
   };
 
