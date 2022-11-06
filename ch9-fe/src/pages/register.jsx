@@ -40,10 +40,11 @@ class Register extends Component {
                 };
                 await set(dbRef, data);
 
-                console.log("SUCCCES", user);
-                localStorage.setItem("jwt-token", user.accessToken);
-                alert("SUCCESS REGISTER");
-                window.location.href = "/game";
+
+                 console.log("SUCCCES", user);
+                 // localStorage.setItem("jwt-token", user.accessToken);
+                 alert("SUCCESS REGISTER");
+                 window.location.href = "/login";
             })
             .catch((error) => {
                 const errorCode = error.code;
