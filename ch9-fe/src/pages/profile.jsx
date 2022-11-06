@@ -6,9 +6,14 @@ import GameHistory from "../components/GameHistory";
 import GamePoint from "../components/GamePoint";
 import { Component } from "react";
 import EditProfileModal from "../components/EditProfileModal";
+import { getBiodataById } from "../action/biodata";
+
 class Profile extends Component {
     state = {
         show: false,
+        username: "",
+        fullname: "",
+        email: "",
     };
 
     handleShow = () => {
@@ -17,23 +22,51 @@ class Profile extends Component {
         });
     };
 
-    check = () => {
-        alert(`click`);
+    getUserData = async () => {
+        const id = this.props.user.user_id;
+        const resp = await getBiodataById(id);
+
+        this.setState({
+            username: resp.username,
+            fullname: resp.fullname,
+            email: resp.email,
+        });
     };
 
-    componentDidMount() {}
+    handleOnChange = (event) => {
+        this.setState({
+            [event.target.id]: event.target.value,
+        });
+    };
+
+    check = () => {
+        alert(`click`);
+        console.log(this.state);
+    };
+
+    componentDidMount() {
+        this.getUserData();
+    }
 
     render() {
+        if (localStorage.getItem("jwt-token") === null) {
+            window.location.href = "/login";
+        }
         return (
             <Container fluid="md" bg="dark" className="my-mt">
                 <Row>
                     <Col sm={4}>
                         <Container>
-                            <ProfileCard showModal={this.handleShow} />
+                            <ProfileCard
+                                showModal={this.handleShow}
+                                user={this.props.user}
+                            />
 
                             <EditProfileModal
                                 show={this.state.show}
                                 handleClose={this.handleShow}
+                                handleOnChange={this.handleOnChange}
+                                check={this.check}
                             />
                         </Container>
                         <Container className="my-mt">

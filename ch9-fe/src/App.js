@@ -7,17 +7,26 @@ import Game from "./pages/game_detail";
 import Profile from "./pages/profile";
 import Layout from "./components/Layout";
 import Register from "./pages/register";
+import { decodedToken } from "./action/authentication";
+import UserProfile from "./pages/userProfile";
 
 function App() {
+    let user;
+    if (localStorage.getItem("jwt-token")) {
+        user = decodedToken(localStorage.getItem("jwt-token"));
+    }
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Landing />} />
-                    <Route path="profile" element={<Profile />} />
+                    <Route
+                        path="profile"
+                        element={<UserProfile user={user} />}
+                    />
                     <Route path="game" element={<Game />} />
                     <Route path="login" element={<Login />} />
-                    <Route path="register" element={<Register/>} />
+                    <Route path="register" element={<Register />} />
                 </Route>
             </Routes>
         </BrowserRouter>
