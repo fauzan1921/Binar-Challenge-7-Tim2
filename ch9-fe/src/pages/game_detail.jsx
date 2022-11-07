@@ -4,30 +4,33 @@ import GameLeaderboard from "../components/GameLeaderboard";
 import ScissorGame from "../components/ScissorGame";
 import "../css/game_detail.css";
 import { getBiodataById } from "../action/biodata";
-import { getLeaderboardById, insertLeaderboard, updateLeaderboard, getAllLeaderboard} from "../action/game"
+import {
+    getLeaderboardById,
+    insertLeaderboard,
+    updateLeaderboard,
+    getAllLeaderboard,
+} from "../action/game";
 
 class Game extends Component {
-
-  state = {
-    playerBackgroundColor: {
-      kertas: false,
-      batu: false,
-      gunting: false,
-    },
-    comBackgroundColor: {
-      kertas: false,
-      batu: false,
-      gunting: false,
-    },
-    isCLick: false,
-    playerChoice: "",
-    comChoice: "",
-    result: "VS",
-    user : {},
-    leaderboardById : {},
-    leaderboard : []
-  };
-
+    state = {
+        playerBackgroundColor: {
+            kertas: false,
+            batu: false,
+            gunting: false,
+        },
+        comBackgroundColor: {
+            kertas: false,
+            batu: false,
+            gunting: false,
+        },
+        isCLick: false,
+        playerChoice: "",
+        comChoice: "",
+        result: "VS",
+        user: {},
+        leaderboardById: {},
+        leaderboard: [],
+    };
 
     handleLogout = () => {
         localStorage.removeItem("jwt-token");
@@ -129,62 +132,66 @@ class Game extends Component {
         }
     };
 
+    getUserData = async () => {
+        const id = this.props.user.user_id;
+        const resp = await getBiodataById(id);
 
-  getUserData = async () => {
-    const id = this.props.user.user_id;
-    const resp = await getBiodataById(id);
+        this.setState({
+            user: resp,
+        });
+    };
 
-    this.setState({
-       user : resp
-    });
-  };
+    getLeaderboardData = async () => {
+        const id = this.props.user.user_id;
+        const resp = await getLeaderboardById(id);
 
-  getLeaderboardData = async () => {
-    const id = this.props.user.user_id;
-    const resp = await getLeaderboardById(id);
+        this.setState({
+            leaderboardById: resp,
+        });
+    };
 
-    this.setState({
-       leaderboardById : resp
-    });
-  };
+    handleWriteLeaderboard = () => {
+        if (this.state.result === "PLAYER WIN") {
+            if (this.state.leaderboard === null) {
+                insertLeaderboard(
+                    this.state.user.username,
+                    this.props.user.user_id
+                );
+            } else {
+                const updateWin = this.state.leaderboardById.win + 1;
 
-  handleWriteLeaderboard = () => {
-    if(this.state.result == "PLAYER WIN"){
-        if(this.state.leaderboard === null){
-            insertLeaderboard(this.state.user.username, this.props.user.user_id)
-        }else{
-            const updateWin =  this.state.leaderboardById.win + 1
+                updateLeaderboard(
+                    this.state.user.username,
+                    updateWin,
+                    this.props.user.user_id
+                );
+            }
+        }
+    };
 
-            updateLeaderboard(this.state.user.username, updateWin, this.props.user.user_id)
+    getAllLeaderboardData = async () => {
+        const resp = await getAllLeaderboard();
 
+        this.setState({
+            leaderboard: resp,
+        });
+    };
+
+    componentDidMount() {
+        this.getUserData();
+        this.getLeaderboardData();
+        this.getAllLeaderboardData();
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.comChoice !== this.state.comChoice) {
+            this.compareChoice();
+        }
+
+        if (prevState.result !== this.state.result) {
+            this.handleWriteLeaderboard();
         }
     }
-  }
-
-  getAllLeaderboardData = async() => {
-    const resp = await getAllLeaderboard()
-
-    this.setState({
-        leaderboard : resp
-    })
-  }
-
-  componentDidMount() {
-    this.getUserData();
-    this.getLeaderboardData()
-    this.getAllLeaderboardData()
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.comChoice != this.state.comChoice) {
-      this.compareChoice();
-    }
-    
-    if(prevState.result != this.state.result){
-        this.handleWriteLeaderboard()
-    }
-  }
-
 
     render() {
         console.log(localStorage.getItem("jwt-token"));
@@ -193,34 +200,35 @@ class Game extends Component {
             window.location.href = "/login";
         }
 
-    console.log(this.state.user)
+        console.log(this.state.user);
 
-    return (
-      <div className="game-detail">
-        <Row>
-          <ScissorGame
-            handlingMouseEnter={this.handlingMouseEnter}
-            handlingMouseLeave={this.handlingMouseLeave}
-            playerBackgroundColor={this.state.playerBackgroundColor}
-            comBackgroundColor={this.state.comBackgroundColor}
-            handlingOnClick={this.handlingOnClick}
-            isCLick={this.state.isCLick}
-            result={this.state.result}
-          />
-          <GameLeaderboard 
-            leaderboard={this.state.leaderboard}
-          />
-          <div className=" text-center gap-2 mt-4">
-            <Button variant="danger" type="submit" onClick={this.handleLogout}>
-              LOGOUT
-            </Button>
-            ;
-          </div>
-        </Row>
-      </div>
-    );
-  }
-
+        return (
+            <div className="game-detail">
+                <Row>
+                    <ScissorGame
+                        handlingMouseEnter={this.handlingMouseEnter}
+                        handlingMouseLeave={this.handlingMouseLeave}
+                        playerBackgroundColor={this.state.playerBackgroundColor}
+                        comBackgroundColor={this.state.comBackgroundColor}
+                        handlingOnClick={this.handlingOnClick}
+                        isCLick={this.state.isCLick}
+                        result={this.state.result}
+                    />
+                    <GameLeaderboard leaderboard={this.state.leaderboard} />
+                    <div className=" text-center gap-2 mt-4">
+                        <Button
+                            variant="danger"
+                            type="submit"
+                            onClick={this.handleLogout}
+                        >
+                            LOGOUT
+                        </Button>
+                        ;
+                    </div>
+                </Row>
+            </div>
+        );
+    }
 }
 
 export default Game;

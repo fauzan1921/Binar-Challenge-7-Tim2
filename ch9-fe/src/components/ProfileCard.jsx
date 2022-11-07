@@ -29,9 +29,19 @@ class ProfileCard extends Component {
                             {this.props.user.email}
                         </h6>
                     </Card.Subtitle>
-                    <Button variant="primary" onClick={this.props.showModal}>
-                        Edit Profile
-                    </Button>
+
+                    {!this.props.param ? (
+                        <>
+                            <Button
+                                variant="primary"
+                                onClick={this.props.showModal}
+                            >
+                                Edit Profile
+                            </Button>
+                        </>
+                    ) : (
+                        <></>
+                    )}
                 </Card.Body>
             </Card>
         );
