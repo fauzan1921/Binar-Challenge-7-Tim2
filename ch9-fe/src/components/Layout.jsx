@@ -32,7 +32,6 @@ const Layout = (props) => {
 
     useEffect(() => {
         getUserBiodata();
-        console.log(user);
     }, []);
 
     return (
@@ -60,9 +59,7 @@ const Layout = (props) => {
                                     <Nav.Link href="/profile">
                                         Hello, {biodata.username}
                                     </Nav.Link>
-                                    <Nav.Link
-                                        onClick={handleLogout}
-                                    >
+                                    <Nav.Link onClick={handleLogout}>
                                         Logout
                                     </Nav.Link>
                                 </>
