@@ -150,7 +150,7 @@ class Game extends Component {
 
   handleWriteLeaderboard = () => {
     if(this.state.result == "PLAYER WIN"){
-        if(this.state.leaderboard === null){
+        if(this.state.leaderboardById === null){
             insertLeaderboard(this.state.user.username, this.props.user.user_id)
         }else{
             const updateWin =  this.state.leaderboardById.win + 1
