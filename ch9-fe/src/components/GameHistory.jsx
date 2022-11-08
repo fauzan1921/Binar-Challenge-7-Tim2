@@ -11,6 +11,13 @@ function GameHistory(props) {
     username: "Loading...",
   });
 
+  //   const restriction = () => {
+  //     const game = leader.game;
+  //     if (game == null) {
+  //       this.props.game: "Loading...";
+  //     }
+  //   };
+
   const leaderboard = async () => {
     const resp = await getLeaderboardById(props.id);
     setLeader(resp);
