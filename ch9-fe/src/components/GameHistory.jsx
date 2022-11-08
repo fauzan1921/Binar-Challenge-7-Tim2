@@ -1,37 +1,58 @@
 import Table from "react-bootstrap/Table";
 import Container from "react-bootstrap/Container";
+import { getLeaderboardById } from "../action/game";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-function GameHistory() {
-    return (
-        <Container>
-            <Table striped bordered hover variant="dark">
-                <thead>
-                    <tr className="text-center">
-                        <th className="my-red-color">Game</th>
-                        <th>Play Time</th>
-                        <th>Point</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Game Title</td>
-                        <td className="text-center">5</td>
-                        <td className="text-center">30</td>
-                    </tr>
-                    <tr>
-                        <td>Game Title</td>
-                        <td className="text-center">2</td>
-                        <td className="text-center">9</td>
-                    </tr>
-                    <tr>
-                        <td>Game Title</td>
-                        <td className="text-center">4</td>
-                        <td className="text-center">16</td>
-                    </tr>
-                </tbody>
-            </Table>
-        </Container>
-    );
+function GameHistory(props) {
+  const [leader, setLeader] = useState({
+    game: "Loading...",
+    win: "Loading...",
+    username: "Loading...",
+  });
+
+  const leaderboard = async () => {
+    const resp = await getLeaderboardById(props.id);
+    setLeader(resp);
+  };
+
+  useEffect(() => {
+    leaderboard();
+  }, []);
+
+  //   const [history, sethistory] = useState({
+  //     gametitle: "Loading...",
+  //     score: "Loading...",
+  //   });
+
+  //   const getHistory = async () => {
+  //     const HistoryId = id;
+  //     const resp = await getLeaderboardById(HistoryId);
+  //     setHistory(resp);
+  //   };
+
+  //   useEffect(() => {
+  //     getPlayerBiodata();
+  //   }, []);
+
+  return (
+    <Container>
+      <Table striped bordered hover variant="dark">
+        <thead>
+          <tr className="text-center">
+            <th className="my-red-color">Game</th>
+            <th>Win</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{leader.game}</td>
+            <td className="text-center">{leader.win}</td>
+          </tr>
+        </tbody>
+      </Table>
+    </Container>
+  );
 }
 
 export default GameHistory;
