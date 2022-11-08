@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "../css/landing_page.css";
 
 class Landing extends Component{
 
@@ -32,20 +33,13 @@ class Landing extends Component{
       <div>
         <div className="container mt-5">
           <h1 className="bold mb-3">Game List</h1>
-          <ul>
-            <li>
-              <button className="btn btn-warning mt-3" onClick={this.goToGameDetail}>Rock, Paper, Scissors</button>
-            </li>
-            <li>
-              <button className="btn btn-warning mt-3" onClick={this.goToGameDetail2}>Draw the Bridge</button>
-            </li>
-            <li>
-              <button className="btn btn-warning mt-3" onClick={this.goToGameDetail3}>2048</button>
-            </li>
-            <li>
-              <button className="btn btn-warning mt-3" onClick={this.goToGameDetail4}>Basket Random</button>
-            </li>
-          </ul>
+              <button className="btn btn-warning mt-4 mx-4 style text" onClick={this.goToGameDetail}>Rock, Paper, Scissors</button>
+            
+              <button className="btn btn-warning mt-4 mx-4 style text" onClick={this.goToGameDetail2}>Draw the Bridge</button>
+          
+              <button className="btn btn-warning mt-4 mx-4 style text" onClick={this.goToGameDetail3}>2048</button>
+            
+              <button className="btn btn-warning mt-4 mx-4 style text" onClick={this.goToGameDetail4}>Basket Random</button>
         </div>
       </div>
     );
