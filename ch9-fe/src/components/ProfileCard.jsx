@@ -7,11 +7,36 @@ class ProfileCard extends Component {
         return (
             <Card>
                 <Card.Body className="text-center">
-                    <img
-                        src="https://picsum.photos/150/150"
-                        alt=""
-                        style={{ borderRadius: "50%" }}
-                    />
+                    {!this.props.user.profileImg ? (
+                        <>
+                            <img
+                                src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                                alt=""
+                                style={{
+                                    borderRadius: "50%",
+                                    width: "150px",
+                                    height: "150px",
+                                    boxShadow:
+                                        "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+                                }}
+                            />
+                        </>
+                    ) : (
+                        <>
+                            <img
+                                src={this.props.user.profileImg}
+                                alt=""
+                                style={{
+                                    borderRadius: "50%",
+                                    width: "150px",
+                                    height: "150px",
+                                    boxShadow:
+                                        "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+                                }}
+                            />
+                        </>
+                    )}
+
                     <Card.Title>
                         <i class="fa-solid fa-user "></i>
                         {"   "}
