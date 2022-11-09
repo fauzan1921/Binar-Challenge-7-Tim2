@@ -21,16 +21,16 @@ function App() {
                 <Route path="/" element={<Layout user={user} />}>
                     <Route index element={<Landing />} />
                     <Route
-                        path="profile"
+                        path="/profile"
                         element={<UserProfile user={user} />}
                     />
                     <Route
-                        path="player/:id"
+                        path="/player/:id"
                         element={<PlayerProfile user={user} />}
                     />
-                    <Route path="game" element={<Game user={user} />} />
-                    <Route path="login" element={<Login />} />
-                    <Route path="register" element={<Register />} />
+                    <Route path="/game" element={<Game user={user} />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
                 </Route>
             </Routes>
         </BrowserRouter>

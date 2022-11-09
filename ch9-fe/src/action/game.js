@@ -8,7 +8,8 @@ export const insertLeaderboard = (username, id) => {
     const dbRef = ref(db, "leaderboard/" + id);
     const data = {
         win : 1,
-        username: username
+        username: username,
+        game: 'scissor'
     };
     set(dbRef, data);
 };
