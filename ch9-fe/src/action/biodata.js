@@ -1,5 +1,11 @@
 import { set, ref, onValue, update } from "firebase/database";
-import { database } from "../config/firebase";
+import { database, storage } from "../config/firebase";
+import {
+    getStorage,
+    ref as storageRef,
+    uploadBytes,
+    getDownloadURL,
+} from "firebase/storage";
 
 const db = database;
 
@@ -27,14 +33,13 @@ export const getBiodataById = (id) => {
     });
 };
 
-
-
 // UPDATE USER DATA BY ID
-export const updateBiodataById = (id, username, fullname) => {
+export const updateBiodataById = (id, username, fullname, url) => {
     const dbRef = ref(db, `biodata/${id}`);
     const updateData = {
         fullname,
         username,
+        profileImg: url,
     };
     update(dbRef, updateData)
         .then(() => {
@@ -43,4 +48,12 @@ export const updateBiodataById = (id, username, fullname) => {
         .catch((error) => {
             return alert(`Data update failed`);
         });
+};
+
+// UPLOAD IMAGE FILE
+export const uploadProfileImage = async (id, file) => {
+    const imgRef = storageRef(storage, `biodata/${id}/${file.name}`);
+    const snapshot = await uploadBytes(imgRef, file);
+    const url = await getDownloadURL(imgRef);
+    return url;
 };

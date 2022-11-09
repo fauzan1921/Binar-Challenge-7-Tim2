@@ -5,7 +5,14 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 
 function EditProfileModal(props) {
-    const { user, show, handleClose, handleOnChange, handleUpdate } = props;
+    const {
+        user,
+        show,
+        handleClose,
+        handleOnChange,
+        handleUpdate,
+        handleFileChange,
+    } = props;
     return (
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
@@ -13,6 +20,10 @@ function EditProfileModal(props) {
             </Modal.Header>
             <Modal.Body>
                 <Form>
+                    <Form.Group controlId="formFile" className="mb-3">
+                        <Form.Label>Upload your profile pic</Form.Label>
+                        <Form.Control type="file" onChange={handleFileChange} />
+                    </Form.Group>
                     <Form.Group as={Row} className="mb-3">
                         <Form.Label column sm="3">
                             Fullname
