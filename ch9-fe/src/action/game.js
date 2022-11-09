@@ -28,8 +28,9 @@ export const getLeaderboardById = (id) => {
 //UPDATE LEADERBOARD
 export const updateLeaderboard = (username, updateWin, id) => {
     const data = {
+        game: 'scissor',
         username : username,
-        win : updateWin
+        win : updateWin,
     }
 
 
