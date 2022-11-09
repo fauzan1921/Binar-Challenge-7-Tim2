@@ -3,6 +3,10 @@ import Container from "react-bootstrap/Container";
 import { getLeaderboardById } from "../action/game";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import ProfileCard from "./ProfileCard";
+import Card from "react-bootstrap/Card";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 function GameHistory(props) {
   const [leader, setLeader] = useState({
@@ -11,36 +15,19 @@ function GameHistory(props) {
     username: "Loading...",
   });
 
-  //   const restriction = () => {
-  //     const game = leader.game;
-  //     if (game == null) {
-  //       this.props.game: "Loading...";
-  //     }
-  //   };
-
-  const leaderboard = async () => {
+  const histories = async () => {
     const resp = await getLeaderboardById(props.id);
     setLeader(resp);
+    console.log(resp);
+    if (resp === null) {
+      setLeader("");
+      // {win} "0"
+    }
   };
 
   useEffect(() => {
-    leaderboard();
+    histories();
   }, []);
-
-  //   const [history, sethistory] = useState({
-  //     gametitle: "Loading...",
-  //     score: "Loading...",
-  //   });
-
-  //   const getHistory = async () => {
-  //     const HistoryId = id;
-  //     const resp = await getLeaderboardById(HistoryId);
-  //     setHistory(resp);
-  //   };
-
-  //   useEffect(() => {
-  //     getPlayerBiodata();
-  //   }, []);
 
   return (
     <Container>

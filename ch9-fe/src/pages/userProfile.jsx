@@ -74,9 +74,6 @@ const UserProfile = (props) => {
               handleUpdate={updateUserData}
             />
           </Container>
-          <Container className="my-mt">
-            <GamePoint />
-          </Container>
         </Col>
         <Col sm={8}>
           <Container>
